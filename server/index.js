@@ -2,7 +2,8 @@ const express = require("express");
 const { connection } = require("./connection/db");
 const app = express();
 const fs = require("fs");
-const move=require("fs-extra")
+const move=require("fs-extra");
+const TodoModel = require("./Models/todo.model");
 require("dotenv").config();
 const PORT = process.env.PORT || 8080;
 app.use(express.json());
@@ -64,7 +65,7 @@ app.post("/directory/create",async(req, res) => {
               console.log("New File written successfully in else");
             }
           });
-          res.send("naye file")
+          res.send("new file")
       }
     }
   });
@@ -92,8 +93,10 @@ app.post("/directory/remove", (req, res) => {
   });
 });
 
-app.listen(PORT, () => {
-  connection;
+
+
+app.listen(PORT, async() => {
+  await connection;
   console.log("connected to db");
   console.log(`connected to port http://localhost:${PORT}`);
 });

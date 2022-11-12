@@ -14,9 +14,7 @@ export const useGetdata = (initialvalue:datainit) => {
          e.preventDefault();
           setData([...data,{...state}])
           setState({
-        name:"",
-        email:"",
-        password:""
+        todo:""
     })
     }
     return{handleChange,handleSubmit,data,state}
